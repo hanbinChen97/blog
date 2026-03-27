@@ -10,14 +10,12 @@ import rehypeCleanup from './src/plugins/rehype-cleanup.mjs'
 import rehypeImageProcessor from './src/plugins/rehype-image-processor.mjs'
 import rehypeCopyCode from './src/plugins/rehype-copy-code.mjs'
 import remarkTOC from './src/plugins/remark-toc.mjs'
-import { themeConfig } from './src/config'
 import { imageConfig } from './src/utils/image-config'
 import path from 'path'
-import netlify from '@astrojs/netlify'
 
 export default defineConfig({
-  adapter: netlify(), // Set adapter for deployment, or set `linkCard` to `false` in `src/config.ts`
-  site: themeConfig.site.website,
+  site: 'https://hanbinChen97.github.io',
+  base: '/blog',
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',

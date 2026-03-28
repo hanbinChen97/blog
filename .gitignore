@@ -25,6 +25,5 @@ pnpm-debug.log*
 .idea/
 
 # Netlify build output
-.netlify/
 
 *.tsbuildinfo

@@ -1,63 +1,88 @@
-# Chiri 🌸
+# My Personal Blog 🚀
 
-![screenshot-light](public/screenshots/screenshot-light.png)
-![screenshot-dark](public/screenshots/screenshot-dark.png)
+这是一个基于 [Astro](https://astro.build) 和 [Chiri](https://github.com/the3ash/astro-chiri) 主题构建的个人博客系统，完全托管在 **GitHub Pages** 的 `/blog` 路径下。
 
-Chiri is a minimal blog theme built with [Astro](https://astro.build), offering customization options while preserving its clean aesthetic.
+## 项目特点
 
-Check the [demo](https://chiri.the3ash.com/) for more details.
+- **Root Router 路由优化**：所有内容均归纳在 `/blog` 路径下运行（例如：`username.github.io/blog/`）。
+- **静态网站渲染**：利用 Astro 的强大性能，将内容预渲染为纯静态 HTML。
+- **多格式内容支持**：
+  - **Markdown/MDX**：支持标准 Markdown 和扩展的 MDX 语法。
+  - **HTML Embeds**：支持直接存放并访问原生的 HTML 嵌入内容（如演示文稿、交互图表等）。
 
-## Features
+## 项目结构
 
-- [x] Build with Astro
-- [x] Responsive
-- [x] Light / Dark mode
-- [x] MDX
-- [x] KaTeX
-- [x] Sitemap
-- [x] OpenGraph
-- [x] RSS
+```text
+/
+├── public/
+│   └── embeds/          <-- 存放你的原生 HTML 内容 (访问路径: /blog/embeds/...)
+├── src/
+│   ├── content/
+│   │   └── posts/       <-- 存放 Markdown/MDX 文章 (访问路径: /blog/post-id/)
+│   └── pages/           <-- 页面路由逻辑
+└── astro.config.ts      <-- 配置 base: '/blog'
+```
 
-## Getting Started
+## 快速开始
 
-1. [Fork](https://github.com/the3ash/astro-chiri/fork) this repository, or use this template to [create a new repository](https://github.com/new?template_name=astro-chiri&template_owner=the3ash).
+### 1. 本地开发
 
-2. Run the following commands:
+确保你已经安装了 [pnpm](https://pnpm.io/)。
 
-   ```bash
-   git clone <your-repo-url>
+```bash
+# 克隆仓库
+git clone <your-repo-url>
+cd blog
 
-   cd <your-repo-name>
+# 安装依赖
+pnpm install
 
-   pnpm install
+# 启动开发服务器 (默认在 http://localhost:4321/blog/)
+pnpm dev
+```
 
-   pnpm dev
-   ```
+### 2. 撰写内容
 
-3. Edit `src/config.ts` and `src/content/about/about.md` to your liking.
+#### 博客文章 (Markdown/MDX)
+将你的文章放入 `src/content/posts/` 目录下：
+- **Markdown**: `example-post.md`
+- **MDX**: `example-post.mdx`
 
-4. Use `pnpm new <title>` to create new posts, or add your posts to `src/content/posts`.
+**注意**：所有文章都需要包含必要的 Frontmatter（标题和日期），例如：
+```yaml
+---
+title: 我的第一篇文章
+pubDate: 2026-03-28
+---
+```
 
-5. You need to set adapter as follows before deploying to Netlify, Vercel, or other platforms, but you can set `linkCard` to `false` in `src/config.ts` to skip this step:
-   - **Netlify**: `pnpm add @astrojs/netlify` and add `adapter: netlify()` in `astro.config.ts`.
-   - **Vercel**: `pnpm add @astrojs/vercel` and add `adapter: vercel()` in `astro.config.ts`.
-   - **Static (e.g. GitHub Pages)**: `pnpm add @astrojs/static` and add `adapter: static()` in `astro.config.ts`.
-   - Refer to [Astro Deployment Guides](https://docs.astro.build/en/guides/deploy/) for more details.
+#### 原生 HTML 嵌入内容 (Embeds)
+直接将你的 HTML 项目文件夹放入 `public/embeds/`。
+- 例如：`public/embeds/hello-world/index.html`
+- 访问地址：`https://username.github.io/blog/embeds/hello-world/`
 
-&emsp;[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start) [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new)
+## 部署流程
 
-## Commands
+本项目使用 GitHub Actions 进行自动化部署。
 
-- `pnpm new <title>` - Create a new post (use `_title` for drafts)
-- `pnpm update-theme` - Update the theme to the latest version
+1. 在 GitHub 仓库设置中：**Settings** > **Pages**。
+2. 在 **Build and deployment** > **Source** 下选择 **GitHub Actions**。
+3. 确保 `astro.config.ts` 中的 `base` 设置为 `/blog`。
+4. 之后每次推送代码到 `main` 分支，GitHub 都会自动构建并发布你的博客。
 
-## References
+## 开发建议
 
-- https://paco.me/
-- https://benji.org/
-- https://shud.in/
-- https://retypeset.radishzz.cc/
+- **内部链接**：在代码中使用 `<a>` 标签时，请务必配合 `import.meta.env.BASE_URL`，以确保在子路径下正常跳转。
+  - 示例：`<a href={`${import.meta.env.BASE_URL}post-id/`}>`
+- **静态资源**：在 Markdown 或 HTML 中引用 `public/` 下的资源时，请确保路径正确。
 
-## License
+## 常用命令
 
-MIT
+- `pnpm dev` - 本地预览
+- `pnpm build` - 构建静态文件
+- `pnpm new <title>` - 创建新文章
+
+## 致谢
+
+- [Astro](https://astro.build)
+- [Chiri Theme](https://github.com/the3ash/astro-chiri)

@@ -15,7 +15,7 @@ import path from 'path'
 
 export default defineConfig({
   site: 'https://hanbinChen97.github.io',
-  base: '/',
+  base: '/blog/',
   outDir: 'dist',
   image: {
     service: {

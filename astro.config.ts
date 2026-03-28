@@ -15,8 +15,8 @@ import path from 'path'
 
 export default defineConfig({
   site: 'https://hanbinChen97.github.io',
-  base: '/blog/',
-  outDir: 'dist/blog',
+  base: '/',
+  outDir: 'dist',
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',

@@ -10,8 +10,8 @@ export async function getFilteredPosts(): Promise<PostEntry[]> {
     getCollection('htmlPosts')
   ])
   return [
-    ...mdPosts.filter((post) => !post.id.startsWith('_')),
-    ...htmlPosts.filter((post) => !post.id.startsWith('_'))
+    ...mdPosts.filter((post: PostEntry) => !post.id.startsWith('_')),
+    ...htmlPosts.filter((post: PostEntry) => !post.id.startsWith('_'))
   ]
 }
 

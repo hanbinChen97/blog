@@ -16,7 +16,10 @@ export interface TOCItem {
   index: number
 }
 
+// Unified post entry type covering both Markdown and HTML posts
+export type PostEntry = CollectionEntry<'posts'> | CollectionEntry<'htmlPosts'>
+
 // PostList component props interface
 export interface PostListProps {
-  posts: CollectionEntry<'posts'>[]
+  posts: PostEntry[]
 }

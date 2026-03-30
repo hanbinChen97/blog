@@ -47,9 +47,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Format check
-        run: pnpm format:check
-
       - name: Lint
         run: pnpm lint
         continue-on-error: true

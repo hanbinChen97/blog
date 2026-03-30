@@ -1,15 +1,15 @@
 ---
 import PostList from '@/components/widgets/PostList.astro'
-import type { CollectionEntry } from 'astro:content'
+import type { PostEntry } from '@/types'
 
 interface Props {
-  posts: CollectionEntry<'posts'>[]
+  posts: PostEntry[]
 }
 
 const { posts } = Astro.props
 
 // Group posts by section, preserving order within each section
-const sectionMap = new Map<string, CollectionEntry<'posts'>[]>()
+const sectionMap = new Map<string, PostEntry[]>()
 const defaultSection = ''
 
 for (const post of posts) {

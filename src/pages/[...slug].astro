@@ -1,22 +1,47 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection, render } from 'astro:content'
 import PostLayout from '@/layouts/PostLayout.astro'
-import { render } from 'astro:content'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts')
-  return posts
+  const [mdPosts, htmlPosts] = await Promise.all([
+    getCollection('posts'),
+    getCollection('htmlPosts')
+  ])
+
+  const mdPaths = mdPosts
     .filter((post) => !post.id.startsWith('_'))
     .map((post) => ({
       params: { slug: post.id },
-      props: post
+      props: { post, collection: 'posts' as const }
     }))
+
+  const htmlPaths = htmlPosts
+    .filter((post) => !post.id.startsWith('_'))
+    .map((post) => ({
+      params: { slug: post.id },
+      props: { post, collection: 'htmlPosts' as const }
+    }))
+
+  return [...mdPaths, ...htmlPaths]
 }
 
-type Props = CollectionEntry<'posts'>
+type Props =
+  | { post: CollectionEntry<'posts'>; collection: 'posts' }
+  | { post: CollectionEntry<'htmlPosts'>; collection: 'htmlPosts' }
 
-const post = Astro.props
-const { Content, remarkPluginFrontmatter } = await render(post)
+const { post, collection } = Astro.props as Props
+
+if (collection === 'htmlPosts') {
+  if (!post.body) {
+    return new Response('Not Found', { status: 404 })
+  }
+  return new Response(post.body, {
+    headers: { 'Content-Type': 'text/html; charset=utf-8' }
+  })
+}
+
+const mdPost = post as CollectionEntry<'posts'>
+const { Content, remarkPluginFrontmatter } = await render(mdPost)
 
 const readingTime = remarkPluginFrontmatter.readingTime
 const toc = remarkPluginFrontmatter.toc || []

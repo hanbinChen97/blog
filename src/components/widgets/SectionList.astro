@@ -1,0 +1,61 @@
+---
+import PostList from '@/components/widgets/PostList.astro'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  posts: CollectionEntry<'posts'>[]
+}
+
+const { posts } = Astro.props
+
+// Group posts by section, preserving order within each section
+const sectionMap = new Map<string, CollectionEntry<'posts'>[]>()
+const defaultSection = ''
+
+for (const post of posts) {
+  const key = post.data.section ?? defaultSection
+  if (!sectionMap.has(key)) {
+    sectionMap.set(key, [])
+  }
+  sectionMap.get(key)!.push(post)
+}
+
+// Named sections first (sorted alphabetically), then posts without a section
+const namedSections = [...sectionMap.entries()]
+  .filter(([key]) => key !== defaultSection)
+  .sort(([a], [b]) => a.localeCompare(b))
+
+const unsectionedPosts = sectionMap.get(defaultSection) ?? []
+---
+
+{
+  namedSections.map(([section, sectionPosts]) => (
+    <section class="post-section">
+      <h2 class="section-title">{section}</h2>
+      <PostList posts={sectionPosts} />
+    </section>
+  ))
+}
+{
+  unsectionedPosts.length > 0 && (
+    <section class="post-section">
+      <PostList posts={unsectionedPosts} />
+    </section>
+  )
+}
+
+<style>
+  .post-section {
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    margin: 0 0 0.25rem;
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-regular);
+    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+</style>

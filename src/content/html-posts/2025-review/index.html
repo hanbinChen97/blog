@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanbin's 2025 回顾</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            padding: 2rem;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+        }
+
+        .photo-placeholder {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .content-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            max-width: 900px;
+            width: 90%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .month-tag {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #38bdf8;
+            transition: width 0.3s ease;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide active" id="slide-0">
+        <div class="content-card text-center">
+            <h1 class="text-5xl font-bold mb-4">2025：翻山越岭</h1>
+            <p class="text-xl text-slate-400 mb-8">一路坎坷，跌跌撞撞，终见曙光</p>
+            <div class="photo-placeholder">
+                <span class="text-slate-500">📷 [年度封面照片]</span>
+            </div>
+            <p class="mt-8 text-sm text-slate-500">Hanbin Chen 的年度总结</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Jan & Feb -->
+    <div class="slide" id="slide-1">
+        <div class="content-card">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <span class="month-tag">一月 · 二月</span>
+                    <h2 class="text-3xl font-semibold mt-2 mb-4">终于毕业了</h2>
+                    <ul class="space-y-3 text-slate-300">
+                        <li>• 2 月 14 日，瓦伦丁节，顺利毕业。</li>
+                        <li>• 一整月的线上德州扑克，与同学切磋。</li>
+                        <li>• 跌跌撞撞，忐忐忑忑。</li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <div class="photo-placeholder h-full">
+                        <span class="text-slate-500">📷 [毕业证/德州战绩]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: March -->
+    <div class="slide" id="slide-2">
+        <div class="content-card">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <span class="month-tag">三月底</span>
+                    <h2 class="text-3xl font-semibold mt-2 mb-4">痛并快乐着</h2>
+                    <ul class="space-y-3 text-slate-300">
+                        <li>• 参加了一场线下健身房德州锦标赛。</li>
+                        <li>• 打球被撞导致胸部肋骨挫伤。</li>
+                        <li>• 那个痛感持续了好几个月。</li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <div class="photo-placeholder h-full">
+                        <span class="text-slate-500">📷 [德州现场/球场照片]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: April -->
+    <div class="slide" id="slide-3">
+        <div class="content-card">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <span class="month-tag">四月</span>
+                    <h2 class="text-3xl font-semibold mt-2 mb-4">柏林的脚步</h2>
+                    <ul class="space-y-3 text-slate-300">
+                        <li>• 开始投身于求职季。</li>
+                        <li>• 四月底，在柏林穿梭。</li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <div class="photo-placeholder h-full">
+                        <span class="text-slate-500">📷 [柏林街头]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: May -->
+    <div class="slide" id="slide-4">
+        <div class="content-card">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 overflow-y-auto max-h-[60vh]">
+                    <span class="month-tag">五月</span>
+                    <h2 class="text-3xl font-semibold mt-2 mb-4">故乡的治愈</h2>
+                    <p class="text-slate-400 mb-4">从亚琛回到温州，漫步在老街小镇。</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-slate-300 mb-4">
+                        <div class="bg-white/5 p-2 rounded">坡南老街</div>
+                        <div class="bg-white/5 p-2 rounded">顺溪 & 碗窑</div>
+                        <div class="bg-white/5 p-2 rounded">满田 & 萧江</div>
+                        <div class="bg-white/5 p-2 rounded">献血记忆</div>
+                    </div>
+                    <ul class="space-y-2 text-slate-300">
+                        <li>• 换了新手机，沉浸在拍照的记录感。</li>
+                        <li>• 享受了很多次放松的足浴。</li>
+                        <li>• 月底重返柏林。</li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <div class="photo-placeholder h-full">
+                        <span class="text-slate-500">📷 [故乡风景/摄影作品]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: June & July -->
+    <div class="slide" id="slide-5">
+        <div class="content-card">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <span class="month-tag">六月 · 七月</span>
+                    <h2 class="text-3xl font-semibold mt-2 mb-4">相见与 Side Project</h2>
+                    <ul class="space-y-3 text-slate-300">
+                        <li>• 六月：拉拉扯扯，来了又回。</li>
+                        <li>• 七月中：前往波茨坦。</li>
+                        <li>• 七月底：完成了一个比较成熟的 Side Project。</li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <div class="photo-placeholder h-full">
+                        <span class="text-slate-500">📷 [项目截图/波茨坦风景]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: August & September -->
+    <div class="slide" id="slide-6">
+        <div class="content-card">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <span class="month-tag">八月 · 九月</span>
+                    <h2 class="text-3xl font-semibold mt-2 mb-4">证书、朋友与血月</h2>
+                    <ul class="space-y-3 text-slate-300">
+                        <li>• 八月：正式拿到毕业证。</li>
+                        <li>• 八月底：照顾百超。</li>
+                        <li>• 九月：捕捉到了震撼的血月。</li>
+                        <li>• 证件照更新（Nano Banana）。</li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <div class="photo-placeholder h-full">
+                        <span class="text-slate-500">📷 [毕业证/血月照片]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: October -->
+    <div class="slide" id="slide-7">
+        <div class="content-card">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <span class="month-tag">十月</span>
+                    <h2 class="text-3xl font-semibold mt-2 mb-4">新的篇章</h2>
+                    <ul class="space-y-3 text-slate-300">
+                        <li>• 顺利办妥工作签证。</li>
+                        <li>• 前往法兰克福。</li>
+                        <li>• 开始培育未来的“种子”。</li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <div class="photo-placeholder h-full">
+                        <span class="text-slate-500">📷 [签证/法兰克福/新开始]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: November -->
+    <div class="slide" id="slide-8">
+        <div class="content-card">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <span class="month-tag">十一月</span>
+                    <h2 class="text-3xl font-semibold mt-2 mb-4">全力以赴</h2>
+                    <ul class="space-y-3 text-slate-300">
+                        <li>• 疯狂找工作模式开启。</li>
+                        <li>• 发布了第一个自我介绍视频。</li>
+                        <li>• 向世界推介自己。</li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <div class="photo-placeholder h-full">
+                        <span class="text-slate-500">📷 [视频录制现场]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Conclusion -->
+    <div class="slide" id="slide-9">
+        <div class="content-card text-center">
+            <h1 class="text-4xl font-bold mb-4">2026 见</h1>
+            <p class="text-xl text-slate-400 mb-8">愿所有的努力，都能开花结果。</p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="changeSlide(0)" class="nav-btn text-sm">重新开始</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="fixed bottom-8 left-0 right-0 flex justify-center space-x-4 z-50">
+        <button onclick="prevSlide()" class="nav-btn">← 上一页</button>
+        <button onclick="nextSlide()" class="nav-btn">下一页 →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+
+        function updateProgress() {
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[index].classList.add('active');
+            currentSlide = index;
+            updateProgress();
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function changeSlide(index) {
+            showSlide(index);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>
